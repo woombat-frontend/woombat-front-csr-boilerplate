@@ -3,6 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Context from './GlobalState/context'
 import useGlobalState from './GlobalState/useGlobalState'
+import { Route, Link, BrowserRouter } from 'react-router-dom'
 
 
 //Import de Componentes y estilos
@@ -14,7 +15,11 @@ const Index = () => {
     const store = useGlobalState();
     return (
         <Context.Provider value={store}>
-            <Main />
+          <BrowserRouter>
+            <div>
+              <Route path="/" component={Main} />
+            </div>
+          </BrowserRouter>
         </Context.Provider>
     )
 };
