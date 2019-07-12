@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'index_bundle.js',
-	publicPath: '/'
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -15,8 +15,11 @@ module.exports = {
                 test: /\.js$/,
                 exclude: '/node_modules/',
                 use: {
-                    loader: 'babel-loader'
-                }
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }      
             },
             {
                 test: /\.css$/,
@@ -31,7 +34,7 @@ module.exports = {
         ]
     },
     devServer: {
-        historyApiFallback: true,
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({
